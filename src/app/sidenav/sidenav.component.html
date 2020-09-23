@@ -1,9 +1,6 @@
 <mat-sidenav-container class="container">
   <mat-sidenav #sidenav class="sidenav" mode="side" position="end">
-    <div
-      [ngStyle]="{'background-image': 'url(' + image + ')'}"
-      class="image">
-    </div>
+   <app-formly></app-formly>
   </mat-sidenav>
   <mat-sidenav-content class="btn-container">
     <button type="button" mat-button (click)="onClick()">

@@ -1,0 +1,52 @@
+import { Component } from '@angular/core';
+import {FormGroup} from '@angular/forms';
+import {FormlyFieldConfig, FormlyFormOptions} from '@ngx-formly/core';
+
+@Component({
+  selector: 'app-formly',
+  templateUrl: './formly.component.html',
+  styleUrls: ['./formly.component.css']
+})
+export class FormlyComponent {
+  form = new FormGroup({});
+  model: any = {};
+  options: FormlyFormOptions = {};
+
+  fields: FormlyFieldConfig[] = [{
+    validators: {
+      validation: [
+        { name: 'fieldMatch', options: { errorPath: 'passwordConfirm' } },
+      ],
+    },
+    fieldGroup: [
+      {
+        key: 'password',
+        type: 'input',
+        templateOptions: {
+          type: 'password',
+          label: 'Password',
+          placeholder: 'Must be at least 3 characters',
+          required: true,
+          minLength: 3,
+        },
+      },
+      {
+        key: 'passwordConfirm',
+        type: 'input',
+        templateOptions: {
+          type: 'password',
+          label: 'Confirm Password',
+          placeholder: 'Please re-enter your password',
+          required: true,
+        },
+      },
+    ],
+  }];
+
+  submit(): void {
+    if (this.form.valid) {
+      alert(JSON.stringify(this.model));
+    }
+  }
+
+}
