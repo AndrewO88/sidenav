@@ -1,0 +1,15 @@
+<mat-drawer-container class="container">
+  <mat-drawer #drawer class="sidenav" mode="side" position="end" (opened)="open()"
+              (closed)="close()">
+    <div
+      [ngStyle]="{'background-image': 'url(' + image + ')'}"
+      class="image">
+    </div>
+  </mat-drawer>
+  <div class="btn-container">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      ПЭК
+    </button>
+  </div>
+</mat-drawer-container>
+
