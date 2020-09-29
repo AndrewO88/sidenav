@@ -16,8 +16,7 @@ import {MatTabGroup} from '@angular/material/tabs';
 
         <mat-tab [disabled]="true">
           <ng-template class="tabs-resize" mat-tab-label>
-            <mat-icon (click)="toggleLabelsWidth($event)" [matTooltip]="'Expand / Collapse'"
-                      svgIcon="arrow-split-vertical"></mat-icon>&nbsp;
+            <mat-icon (click)="toggleLabelsWidth($event)" [matTooltip]="'Expand / Collapse'"></mat-icon>&nbsp;
           </ng-template>
         </mat-tab>
 
@@ -26,7 +25,7 @@ import {MatTabGroup} from '@angular/material/tabs';
 
           <ng-template mat-tab-label>
             <mat-icon matTooltip="{{ f?.templateOptions?.description || '' }}"
-                      svgIcon="{{ f?.templateOptions?.attributes?.icon || 'radiobox-marked' }}"></mat-icon>&nbsp;
+                      ></mat-icon>&nbsp;
             <span>{{ f?.templateOptions?.label }}</span>
           </ng-template>
 

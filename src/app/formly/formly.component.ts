@@ -58,8 +58,55 @@ export class FormlyComponent {
   _translate = {
     instant: (value: string) => value
   };
-  form: FormArray;
-  model: any;
+
+  form: FormArray = new FormArray([]);
+  model = {
+    query: {
+      titles: [
+        {
+          text: 'Столбчатый'
+        }
+      ],
+      dataSource: undefined,
+      dimensions: undefined,
+      dateInterval: [new Date(), new Date()],
+      metrics: undefined,
+      granularity: { 'type': 'all' },
+      aggregation: [],
+      postAggregations: [],
+      stack: {
+        current: 0,
+        levels: [
+          {
+            type: 'true',
+            dimension: undefined,
+            value: undefined
+          }
+        ]
+      }
+    },
+    chart: {
+      valueAxes: [
+        {
+          renderer: {
+            labels: {
+              template: {
+                disabled: false
+              }
+            }
+          }
+        }
+      ],
+      bullets: {
+        disabled: false,
+        numberFormatter: '#,###.'
+      }
+    },
+    filters: [],
+    colors: null,
+  };
+
+
   options: FormlyFormOptions = {};
   schema: FormlySchema = {
     tabs: [

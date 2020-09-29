@@ -36,6 +36,7 @@ export class DateRangeType extends FieldArrayType implements OnInit {
   range: FormGroup;
 
   ngOnInit() {
+
     const start: FormControl = this.formControl.controls[0] as FormControl;
     const end: FormControl = this.formControl.controls[1] as FormControl;
     start.disable();

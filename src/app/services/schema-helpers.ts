@@ -11,11 +11,13 @@ export interface FormlyOption {
   value: string;
   disabled?: boolean;
 }
+
 export interface IStackLevel {
   type: StackLevelType;
   value?: string;
   dimension?: Dimension;
 }
+
 export interface IFilter {
   l: string;
   oper: string;
@@ -30,8 +32,10 @@ export interface IFilter {
   targets?: string[];
   widget?: boolean;
 }
+
 export type Dimension = string;
 export type StackLevelType = 'selector' | 'true' | 'and';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -48,7 +52,7 @@ export class SchemaHelpersService {
       label: this._translate.instant('Titles'),
       description: this._translate.instant('Top and bottom titles parameters'),
       attributes: {
-        icon: 'format-title',
+        icon: null,
       }
     },
     fieldArray: {
@@ -137,7 +141,7 @@ export class SchemaHelpersService {
       label: this._translate.instant('Period'),
       description: this._translate.instant('Period parameters'),
       attributes: {
-        icon: 'calendar-multiple',
+        icon: null,
         label: this._translate.instant('Enter a date range'),
         invalidStart: this._translate.instant('Invalid start date'),
         invalidEnd: this._translate.instant('Invalid end date'),
@@ -152,7 +156,8 @@ export class SchemaHelpersService {
       label: this._translate.instant('Data source'),
       description: this._translate.instant('Select data source'),
       attributes: {
-        icon: 'semantic-web'
+        icon: null
+
       },
       options: [],
       valueProp: 'value',
@@ -173,7 +178,7 @@ export class SchemaHelpersService {
       label: this._translate.instant('Aggregation'),
       description: this._translate.instant('Select aggregation function'),
       attributes: {
-        icon: 'function'
+        icon: null
       },
       options: [],
       multiple: true,
@@ -195,7 +200,7 @@ export class SchemaHelpersService {
       label: this._translate.instant('Dimension'),
       description: this._translate.instant('Select a dimension. Dimension selection is available after selecting Data source'),
       attributes: {
-        icon: 'diameter-outline'
+        icon: null
       },
       multiple: true,
       options: [],
@@ -216,7 +221,7 @@ export class SchemaHelpersService {
       label: this._translate.instant('Metric'),
       description: this._translate.instant('Select a metric. Metric selection is available after selecting Data source'),
       attributes: {
-        icon: 'calculator-variant'
+        icon: null
       },
       multiple: true,
       options: [],
@@ -238,7 +243,7 @@ export class SchemaHelpersService {
       label: this._translate.instant('Value axis'),
       description: this._translate.instant('Value axis parameters'),
       attributes: {
-        icon: 'axis-z-arrow'
+        icon: null
       },
       single: true,
       backgroundColor: '#FFFFFF'
@@ -293,7 +298,7 @@ export class SchemaHelpersService {
       label: this._translate.instant('Labels'),
       description: this._translate.instant('Parameters of labels on series'),
       attributes: {
-        icon: 'decimal-increase'
+        icon: null
       }
     },
     fieldGroup: [
@@ -355,7 +360,7 @@ export class SchemaHelpersService {
       label: this._translate.instant('Legend'),
       description: this._translate.instant('Legend parameters'),
       attributes: {
-        icon: 'map-legend',
+        icon: null,
         faq: this._translate.instant('Legend parameters'),
       }
     },
@@ -430,7 +435,7 @@ export class SchemaHelpersService {
               label: this._translate.instant('Color sets for charts'),
               description: this._translate.instant('Color sets for charts'),
               attributes: {
-                icon: 'palette'
+                icon: null
               }
             },
           }
@@ -499,7 +504,7 @@ export class SchemaHelpersService {
       label: this._translate.instant('Filters'),
       description: this._translate.instant('Filters parameters'),
       attributes: {
-        icon: 'filter'
+        icon: null
       },
       panel: false
     },
@@ -654,7 +659,7 @@ export class SchemaHelpersService {
       label: this._translate.instant('Cross filter'),
       description: this._translate.instant('Cross filter parameters'),
       attributes: {
-        icon: 'air-filter'
+        icon: null
       }
     },
     fieldGroup: [
@@ -674,7 +679,7 @@ export class SchemaHelpersService {
       label: this._translate.instant('Background'),
       description: this._translate.instant('Background parameters'),
       attributes: {
-        icon: 'format-color-fill',
+        icon: null,
         faq: this._translate.instant('Background parameters'),
       }
     },
@@ -690,7 +695,6 @@ export class SchemaHelpersService {
       }
     ]
   };
-
   PALITRA: FormlyFieldConfig = {
     key: 'columns',
     wrappers: ['mat-expansion-panel'],
@@ -698,7 +702,7 @@ export class SchemaHelpersService {
       label: this._translate.instant('Dynamic palette'),
       description: this._translate.instant('Dynamic palette'),
       attributes: {
-        icon: 'view-comfy'
+        icon: null
       }
     },
     fieldGroup: [

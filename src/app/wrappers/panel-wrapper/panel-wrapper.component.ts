@@ -10,7 +10,7 @@ import {FieldWrapper} from '@ngx-formly/core';
           <div class="title">
             <div class="label">{{to?.label || ''}}</div>
             <div class="icon">
-              <mat-icon class="faq-icon" svgIcon="comment-question-outline" matTooltip="{{to?.description || ''}}"></mat-icon>
+              <mat-icon class="faq-icon" matTooltip="{{to?.description || ''}}"></mat-icon>
             </div>
           </div>
         </mat-panel-title>

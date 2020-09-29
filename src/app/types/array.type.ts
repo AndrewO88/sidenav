@@ -14,14 +14,14 @@ import {FieldArrayType} from '@ngx-formly/core';
           <formly-field class="formly-field" [field]="field"></formly-field>
         </div>
         <div *ngIf="!to.single" class="buttons">
-          <button (click)="remove(i)" mat-icon-button color="warn" [matTooltip]="'Remove' | translate">
+          <button (click)="remove(i)" mat-icon-button color="warn" [matTooltip]="'Remove'">
             <mat-icon>delete</mat-icon>
           </button>
         </div>
       </div>
 
       <div *ngIf="!to.single" fxLayout="row">
-        <button (click)="add()" type="button" mat-icon-button color="primary" [matTooltip]="'Add' | translate">
+        <button (click)="add()" type="button" mat-icon-button color="primary" [matTooltip]="'Add'">
           <mat-icon>add</mat-icon>
         </button>
       </div>
