@@ -24,8 +24,7 @@ import {MatTabGroup} from '@angular/material/tabs';
                  [disabled]="f?.templateOptions?.disabled || ( index>0 && !isValid(index-1) )">
 
           <ng-template mat-tab-label>
-            <mat-icon matTooltip="{{ f?.templateOptions?.description || '' }}"
-                      ></mat-icon>&nbsp;
+            <mat-icon>brightness_auto</mat-icon>&nbsp;
             <span>{{ f?.templateOptions?.label }}</span>
           </ng-template>
 

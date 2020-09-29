@@ -131,7 +131,7 @@ export class FormlyComponent {
                   label: this._translate.instant('Data drilling'),
                   description: this._translate.instant('Data drilling parameters'),
                   attributes: {
-                    icon: 'animation-outline'
+                    icon: null
                   },
                 },
                 fieldGroup: [
