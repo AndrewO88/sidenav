@@ -52,6 +52,7 @@ export class SchemaHelpersService {
       label: this._translate.instant('Titles'),
       description: this._translate.instant('Top and bottom titles parameters'),
       attributes: {
+        forTab: 'titles',
         icon: null,
       }
     },
@@ -145,6 +146,7 @@ export class SchemaHelpersService {
         label: this._translate.instant('Enter a date range'),
         invalidStart: this._translate.instant('Invalid start date'),
         invalidEnd: this._translate.instant('Invalid end date'),
+        forTab: 'query',
       }
     }
   };
@@ -156,13 +158,13 @@ export class SchemaHelpersService {
       label: this._translate.instant('Data source'),
       description: this._translate.instant('Select data source'),
       attributes: {
-        icon: null
-
+        icon: null,
+        forTab: 'query',
       },
       options: [],
       valueProp: 'value',
       labelProp: 'name',
-      required: true
+      required: true,
     },
     hooks: {
       onInit: (field) => {
@@ -170,7 +172,7 @@ export class SchemaHelpersService {
       }
     }
   };
-  AGGREGATIONS = {
+  AGGREGATIONS: FormlyFieldConfig = {
     key: 'aggregation',
     wrappers: ['mat-expansion-panel', 'form-field'],
     type: 'select',
@@ -178,13 +180,14 @@ export class SchemaHelpersService {
       label: this._translate.instant('Aggregation'),
       description: this._translate.instant('Select aggregation function'),
       attributes: {
-        icon: null
+        icon: null,
+        forTab: 'query',
       },
       options: [],
       multiple: true,
       valueProp: 'value',
       labelProp: 'name',
-      required: true
+      required: true,
     },
     hooks: {
       onInit: (field) => {
@@ -192,7 +195,7 @@ export class SchemaHelpersService {
       }
     }
   };
-  DIMENSIONS = {
+  DIMENSIONS: FormlyFieldConfig = {
     key: 'dimensions',
     wrappers: ['mat-expansion-panel', 'form-field'],
     type: 'select',
@@ -200,12 +203,14 @@ export class SchemaHelpersService {
       label: this._translate.instant('Dimension'),
       description: this._translate.instant('Select a dimension. Dimension selection is available after selecting Data source'),
       attributes: {
-        icon: null
+        icon: null,
+        forTab: 'query',
       },
       multiple: true,
       options: [],
       valueProp: 'value',
       labelProp: 'name',
+      hidden: true,
     },
     hooks: {
       onInit: (field) => {
@@ -213,7 +218,7 @@ export class SchemaHelpersService {
       }
     }
   };
-  METRICS = {
+  METRICS: FormlyFieldConfig = {
     key: 'metrics',
     wrappers: ['mat-expansion-panel', 'form-field'],
     type: 'select',
@@ -221,7 +226,8 @@ export class SchemaHelpersService {
       label: this._translate.instant('Metric'),
       description: this._translate.instant('Select a metric. Metric selection is available after selecting Data source'),
       attributes: {
-        icon: null
+        icon: null,
+        forTab: 'query',
       },
       multiple: true,
       options: [],
@@ -243,7 +249,8 @@ export class SchemaHelpersService {
       label: this._translate.instant('Value axis'),
       description: this._translate.instant('Value axis parameters'),
       attributes: {
-        icon: null
+        icon: null,
+        forTab: 'query',
       },
       single: true,
       backgroundColor: '#FFFFFF'
@@ -298,8 +305,9 @@ export class SchemaHelpersService {
       label: this._translate.instant('Labels'),
       description: this._translate.instant('Parameters of labels on series'),
       attributes: {
-        icon: null
-      }
+        icon: null,
+        forTab: 'query',
+      },
     },
     fieldGroup: [
       {
@@ -361,8 +369,8 @@ export class SchemaHelpersService {
       description: this._translate.instant('Legend parameters'),
       attributes: {
         icon: null,
-        faq: this._translate.instant('Legend parameters'),
-      }
+        forTab: 'query',
+      },
     },
     fieldGroup: [
       {
@@ -444,6 +452,12 @@ export class SchemaHelpersService {
     ]
   };
   STACK_FIELD_ARRAY: FormlyFieldConfig = {
+    templateOptions: {
+      attributes: {
+        icon: null,
+        forTab: 'query',
+      },
+    },
     fieldGroup: [
       {
         key: 'type',
@@ -504,7 +518,8 @@ export class SchemaHelpersService {
       label: this._translate.instant('Filters'),
       description: this._translate.instant('Filters parameters'),
       attributes: {
-        icon: null
+        icon: null,
+        forTab: 'query',
       },
       panel: false
     },
@@ -659,7 +674,8 @@ export class SchemaHelpersService {
       label: this._translate.instant('Cross filter'),
       description: this._translate.instant('Cross filter parameters'),
       attributes: {
-        icon: null
+        icon: null,
+        forTab: 'query'
       }
     },
     fieldGroup: [

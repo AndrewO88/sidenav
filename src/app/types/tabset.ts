@@ -20,17 +20,20 @@ import {MatTabGroup} from '@angular/material/tabs';
           </ng-template>
         </mat-tab>
 
-        <mat-tab *ngFor="let f of tabs; let index = index;"
-                 [disabled]="f?.templateOptions?.disabled || ( index>0 && !isValid(index-1) )">
+        <mat-tab *ngFor="let tab of to.tabs; let index = index;"
+                 [disabled]="false">
 
           <ng-template mat-tab-label>
-            <mat-icon>brightness_auto</mat-icon>&nbsp;
-            <span>{{ f?.templateOptions?.label }}</span>
+            <mat-icon *ngIf="!!tab.icon">{{ tab.icon }}</mat-icon>&nbsp;
+            <span>{{ tab?.label }}</span>
           </ng-template>
 
-          <formly-field [field]="f"></formly-field>
+          <div class="formly-tab-field-container" *ngFor="let f of fieldsForTab(fields, tab?.label)">
+            <formly-field [field]="f"></formly-field>
+          </div>
 
         </mat-tab>
+
       </mat-tab-group>
     </div>
   `,
@@ -100,6 +103,10 @@ import {MatTabGroup} from '@angular/material/tabs';
         padding: 5px 10px;
       }
 
+      .formly-tab-field-container {
+        margin-bottom: 15px;
+      }
+
     `
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -119,8 +126,9 @@ export class FormlyFieldTabsetComponent extends FieldType implements AfterViewIn
   /**
    * Tabs
    */
-  get tabs(): FormlyFieldConfig[] {
-    return new VisiblePipe().transform(this.field.fieldGroup, 'templateOptions');
+  get fields(): FormlyFieldConfig[] {
+    return this.field.fieldGroup;
+    // return new VisiblePipe().transform(this.field.fieldGroup, 'templateOptions');
   }
 
   ngAfterViewInit() {
@@ -150,4 +158,7 @@ export class FormlyFieldTabsetComponent extends FieldType implements AfterViewIn
     this.labelsWidth = this.labelsWidth === 'short' ? 'full' : 'short';
   }
 
+  fieldsForTab(fields: FormlyFieldConfig[], tabName: string): FormlyFieldConfig[] {
+    return fields.filter((field) => (field.templateOptions.attributes.forTab as string).toLowerCase() === tabName.toLowerCase());
+  }
 }

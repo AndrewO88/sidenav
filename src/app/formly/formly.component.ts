@@ -71,7 +71,7 @@ export class FormlyComponent {
       dimensions: undefined,
       dateInterval: [new Date(), new Date()],
       metrics: undefined,
-      granularity: { 'type': 'all' },
+      granularity: {'type': 'all'},
       aggregation: [],
       postAggregations: [],
       stack: {
@@ -117,6 +117,17 @@ export class FormlyComponent {
           {
             key: 'query',
             type: 'tabset',
+            templateOptions: {
+              tabs: [
+                {
+                  label: 'Titles',
+                  icon: 'brightness_auto'
+                },
+                {
+                  label: 'Query'
+                }
+              ]
+            },
             fieldGroup: [
               this._helper.CHART_TITLES,
               this._helper.DATE_INTERVAL,
@@ -131,7 +142,8 @@ export class FormlyComponent {
                   label: this._translate.instant('Data drilling'),
                   description: this._translate.instant('Data drilling parameters'),
                   attributes: {
-                    icon: null
+                    icon: null,
+                    forTab: 'query'
                   },
                 },
                 fieldGroup: [
@@ -186,7 +198,7 @@ export class FormlyComponent {
           }
         ]
       },
-      this._helper.COLORS
+      this._helper.COLORS,
     ]
   };
 
