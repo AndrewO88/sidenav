@@ -1,6 +1,5 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {FieldType, FormlyFieldConfig} from '@ngx-formly/core';
-import {VisiblePipe} from './visible.pipe';
 import {MatTabGroup} from '@angular/material/tabs';
 
 @Component({
@@ -16,7 +15,7 @@ import {MatTabGroup} from '@angular/material/tabs';
 
         <mat-tab [disabled]="true">
           <ng-template class="tabs-resize" mat-tab-label>
-            <mat-icon (click)="toggleLabelsWidth($event)" [matTooltip]="'Expand / Collapse'"></mat-icon>&nbsp;
+            <mat-icon (click)="toggleLabelsWidth($event)" [matTooltip]="'Expand / Collapse'">cached</mat-icon>&nbsp;
           </ng-template>
         </mat-tab>
 

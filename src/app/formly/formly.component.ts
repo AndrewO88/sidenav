@@ -3,6 +3,7 @@ import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
 import {FormlyFieldConfig, FormlyFormOptions} from '@ngx-formly/core';
 import {SchemaHelpersService} from '../services/schema-helpers';
 
+
 interface FormlySchema {
   tabs: Tab[];
 }
@@ -28,7 +29,7 @@ export interface Tab {
               <span>{{tab?.label}}</span>
             </ng-template>
 
-            <formly-form [fields]="tab?.fields" [form]="castFormGroup(form.at(index))" [model]="model"
+            <formly-form (modelChange)="onChange(model)" [fields]="tab?.fields" [form]="castFormGroup(form.at(index))" [model]="model"
                          [options]="options[index]">
             </formly-form>
           </mat-tab>
@@ -42,7 +43,7 @@ export interface Tab {
       .param-manager {
         display: flex;
         flex-direction: column;
-        width: 500px;
+        width: 100%;
         height: 100%;
       }
 
@@ -69,7 +70,7 @@ export class FormlyComponent {
       ],
       dataSource: undefined,
       dimensions: undefined,
-      dateInterval: [new Date(), new Date()],
+      dateInterval: ['10-10-2020', '10-20-2020'],
       metrics: undefined,
       granularity: {'type': 'all'},
       aggregation: [],
@@ -124,7 +125,8 @@ export class FormlyComponent {
                   icon: 'brightness_auto'
                 },
                 {
-                  label: 'Query'
+                  label: 'Query',
+                  icon: 'brightness_low'
                 }
               ]
             },
@@ -135,37 +137,7 @@ export class FormlyComponent {
               this._helper.DIMENSIONS,
               this._helper.AGGREGATIONS,
               this._helper.METRICS,
-              {
-                key: 'stack',
-                wrappers: ['mat-expansion-panel'],
-                templateOptions: {
-                  label: this._translate.instant('Data drilling'),
-                  description: this._translate.instant('Data drilling parameters'),
-                  attributes: {
-                    icon: null,
-                    forTab: 'query'
-                  },
-                },
-                fieldGroup: [
-                  {
-                    key: 'levels',
-                    type: 'stack',
-                    templateOptions: {
-                      label: this._translate.instant('Detail levels'),
-                      description: this._translate.instant('Data drilling parameters'),
-                      labels: [
-                        this._translate.instant('Category'),
-                        this._translate.instant('Drilldown(Level 1)'),
-                        this._translate.instant('Drilldown(Level 2)'),
-                        this._translate.instant('Drilldown(Level 3)'),
-                        this._translate.instant('Drilldown(Level 4)'),
-                        this._translate.instant('Drilldown(Level 5)')
-                      ]
-                    },
-                    fieldArray: this._helper.STACK_FIELD_ARRAY
-                  }
-                ]
-              },
+              // this._helper.STACK
             ]
           }
         ]
@@ -207,5 +179,9 @@ export class FormlyComponent {
 
   castFormGroup(value: AbstractControl): FormGroup {
     return value as FormGroup;
+  }
+
+  onChange(model: any) {
+    console.log(model);
   }
 }

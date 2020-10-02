@@ -24,7 +24,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {FormlyMatDatepickerModule} from '@ngx-formly/material/datepicker';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatDividerModule} from '@angular/material/divider';
@@ -38,6 +38,7 @@ import {ObjectTypeComponent} from './types/object.type';
 import {VisiblePipe} from './types/visible.pipe';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {SelectAutocompleteModule} from './mat-select-autocomplete/select-autocomplete-module.module';
+import {TestPanelWrapperComponent} from './wrappers/panel-wrapper/test-panel-wrapper.component';
 
 
 
@@ -55,6 +56,7 @@ import {SelectAutocompleteModule} from './mat-select-autocomplete/select-autocom
     FormlyButtonTypeComponent,
     FormlyWidgetFilterTypeComponent,
     PanelWrapperComponent,
+    TestPanelWrapperComponent,
     SuffixWrapperComponent,
     GroupTypeComponent,
     ObjectTypeComponent,
@@ -96,6 +98,7 @@ import {SelectAutocompleteModule} from './mat-select-autocomplete/select-autocom
       ],
       wrappers: [
         {name: 'mat-expansion-panel', component: PanelWrapperComponent},
+        {name: 'test-mat-expansion-panel', component: TestPanelWrapperComponent},
         {name: 'suffix', component: SuffixWrapperComponent}
       ]
     }),
@@ -117,7 +120,8 @@ import {SelectAutocompleteModule} from './mat-select-autocomplete/select-autocom
     MatCheckboxModule,
     SelectAutocompleteModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

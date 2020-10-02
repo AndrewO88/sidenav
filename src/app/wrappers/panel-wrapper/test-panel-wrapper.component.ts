@@ -2,9 +2,9 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {FieldWrapper} from '@ngx-formly/core';
 
 @Component({
-  selector: 'formly-wrapper-panel',
+  selector: 'test-formly-wrapper-panel',
   template: `
-    <mat-expansion-panel class="formly-wrapper-expansion-panel" expanded="false">
+    <mat-expansion-panel class="formly-wrapper-expansion-panel" expanded="true" hideToggle="true"  >
       <mat-expansion-panel-header>
         <mat-panel-title>
           <div class="title">
@@ -24,7 +24,7 @@ import {FieldWrapper} from '@ngx-formly/core';
     </mat-expansion-panel>
   `,
   styles: [
-      `
+    `
       .formly-wrapper-expansion-panel .mat-expansion-panel-header-title {
         flex-grow: 10;
       }
@@ -76,6 +76,6 @@ import {FieldWrapper} from '@ngx-formly/core';
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class PanelWrapperComponent extends FieldWrapper {
+export class TestPanelWrapperComponent extends FieldWrapper {
 }
 

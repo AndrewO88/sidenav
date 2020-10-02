@@ -46,7 +46,7 @@ export class SchemaHelpersService {
 
   CHART_TITLES: FormlyFieldConfig = {
     key: 'titles',
-    wrappers: ['mat-expansion-panel'],
+    wrappers: ['test-mat-expansion-panel'],
     type: 'array',
     templateOptions: {
       label: this._translate.instant('Titles'),
@@ -136,14 +136,14 @@ export class SchemaHelpersService {
   };
   DATE_INTERVAL: FormlyFieldConfig = {
     key: 'dateInterval',
-    wrappers: ['mat-expansion-panel'],
+    // wrappers: ['mat-expansion-panel'],
     type: 'date-range',
     templateOptions: {
       label: this._translate.instant('Period'),
       description: this._translate.instant('Period parameters'),
       attributes: {
         icon: null,
-        label: this._translate.instant('Enter a date range'),
+        label: this._translate.instant('Enter a date range*'),
         invalidStart: this._translate.instant('Invalid start date'),
         invalidEnd: this._translate.instant('Invalid end date'),
         forTab: 'query',
@@ -152,8 +152,9 @@ export class SchemaHelpersService {
   };
   DATA_SOURCE: FormlyFieldConfig = {
     key: 'dataSource',
-    wrappers: ['mat-expansion-panel', 'form-field'],
+    // wrappers: ['test-mat-expansion-panel', 'form-field'],
     type: 'select',
+    wrappers: ['form-field'],
     templateOptions: {
       label: this._translate.instant('Data source'),
       description: this._translate.instant('Select data source'),
@@ -174,7 +175,8 @@ export class SchemaHelpersService {
   };
   AGGREGATIONS: FormlyFieldConfig = {
     key: 'aggregation',
-    wrappers: ['mat-expansion-panel', 'form-field'],
+    // wrappers: ['test-mat-expansion-panel', 'form-field'],
+    wrappers: ['form-field'],
     type: 'select',
     templateOptions: {
       label: this._translate.instant('Aggregation'),
@@ -197,7 +199,8 @@ export class SchemaHelpersService {
   };
   DIMENSIONS: FormlyFieldConfig = {
     key: 'dimensions',
-    wrappers: ['mat-expansion-panel', 'form-field'],
+    // wrappers: ['test-mat-expansion-panel', 'form-field'],
+    wrappers: ['form-field'],
     type: 'select',
     templateOptions: {
       label: this._translate.instant('Dimension'),
@@ -220,7 +223,8 @@ export class SchemaHelpersService {
   };
   METRICS: FormlyFieldConfig = {
     key: 'metrics',
-    wrappers: ['mat-expansion-panel', 'form-field'],
+    // wrappers: ['test-mat-expansion-panel', 'form-field'],
+    wrappers: ['form-field'],
     type: 'select',
     templateOptions: {
       label: this._translate.instant('Metric'),
@@ -243,7 +247,7 @@ export class SchemaHelpersService {
   };
   VALUE_AXES: FormlyFieldConfig = {
     key: 'valueAxes',
-    wrappers: ['mat-expansion-panel'],
+    // wrappers: ['test-mat-expansion-panel'],
     type: 'array',
     templateOptions: {
       label: this._translate.instant('Value axis'),
@@ -300,7 +304,7 @@ export class SchemaHelpersService {
   };
   BULLETS: FormlyFieldConfig = {
     key: 'bullets',
-    wrappers: ['mat-expansion-panel'],
+    // wrappers: ['test-mat-expansion-panel'],
     templateOptions: {
       label: this._translate.instant('Labels'),
       description: this._translate.instant('Parameters of labels on series'),
@@ -363,7 +367,7 @@ export class SchemaHelpersService {
   };
   LEGEND: FormlyFieldConfig = {
     key: 'legend',
-    wrappers: ['mat-expansion-panel'],
+    // wrappers: ['test-mat-expansion-panel'],
     templateOptions: {
       label: this._translate.instant('Legend'),
       description: this._translate.instant('Legend parameters'),
@@ -513,7 +517,7 @@ export class SchemaHelpersService {
   USER_FILTERS: FormlyFieldConfig = {
     key: 'filters',
     type: 'filters',
-    wrappers: ['mat-expansion-panel'],
+    // wrappers: ['test-mat-expansion-panel'],
     templateOptions: {
       label: this._translate.instant('Filters'),
       description: this._translate.instant('Filters parameters'),
@@ -669,7 +673,7 @@ export class SchemaHelpersService {
   };
   CROSS_FILTER: FormlyFieldConfig = {
     key: 'crossFilter',
-    wrappers: ['mat-expansion-panel'],
+    // wrappers: ['test-mat-expansion-panel'],
     templateOptions: {
       label: this._translate.instant('Cross filter'),
       description: this._translate.instant('Cross filter parameters'),
@@ -685,6 +689,37 @@ export class SchemaHelpersService {
         templateOptions: {
           label: this._translate.instant('Turn on Cross filter'),
         }
+      }
+    ]
+  };
+  STACK = {
+    key: 'stack',
+    // wrappers: ['test-mat-expansion-panel'],
+    templateOptions: {
+      label: this._translate.instant('Data drilling'),
+      description: this._translate.instant('Data drilling parameters'),
+      attributes: {
+        icon: null,
+        forTab: 'query'
+      },
+    },
+    fieldGroup: [
+      {
+        key: 'levels',
+        type: 'stack',
+        templateOptions: {
+          label: this._translate.instant('Detail levels'),
+          description: this._translate.instant('Data drilling parameters'),
+          labels: [
+            this._translate.instant('Category'),
+          this._translate.instant('Drilldown(Level 1)'),
+          this._translate.instant('Drilldown(Level 2)'),
+          this._translate.instant('Drilldown(Level 3)'),
+          this._translate.instant('Drilldown(Level 4)'),
+          this._translate.instant('Drilldown(Level 5)')
+          ]
+        },
+        fieldArray: this.STACK_FIELD_ARRAY
       }
     ]
   };
