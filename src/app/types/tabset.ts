@@ -12,13 +12,11 @@ import {MatTabGroup} from '@angular/material/tabs';
         animationDuration="0ms"
         [disablePagination]="true"
       >
-
         <mat-tab [disabled]="true">
-          <ng-template class="tabs-resize" mat-tab-label>
+          <ng-template class="tabs-resize" mat-tab-label >
             <mat-icon (click)="toggleLabelsWidth($event)" [matTooltip]="'Expand / Collapse'">cached</mat-icon>&nbsp;
           </ng-template>
         </mat-tab>
-
         <mat-tab *ngFor="let tab of to.tabs; let index = index;"
                  [disabled]="false">
 
@@ -91,7 +89,7 @@ import {MatTabGroup} from '@angular/material/tabs';
       }
 
       .left-tabs.short .mat-tab-label-container {
-        width: 34px;
+        width: 32px;
       }
 
       .left-tabs .mat-tab-label-content span {
@@ -100,12 +98,15 @@ import {MatTabGroup} from '@angular/material/tabs';
 
       .left-tabs .mat-tab-body-content {
         padding: 5px 10px;
+        width: 447px;
       }
 
       .formly-tab-field-container {
         margin-bottom: 15px;
       }
-
+      .testbar {
+        border: solid red 2px;
+      }
     `
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,

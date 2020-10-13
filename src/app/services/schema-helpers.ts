@@ -712,11 +712,11 @@ export class SchemaHelpersService {
           description: this._translate.instant('Data drilling parameters'),
           labels: [
             this._translate.instant('Category'),
-          this._translate.instant('Drilldown(Level 1)'),
-          this._translate.instant('Drilldown(Level 2)'),
-          this._translate.instant('Drilldown(Level 3)'),
-          this._translate.instant('Drilldown(Level 4)'),
-          this._translate.instant('Drilldown(Level 5)')
+            this._translate.instant('Drilldown(Level 1)'),
+            this._translate.instant('Drilldown(Level 2)'),
+            this._translate.instant('Drilldown(Level 3)'),
+            this._translate.instant('Drilldown(Level 4)'),
+            this._translate.instant('Drilldown(Level 5)')
           ]
         },
         fieldArray: this.STACK_FIELD_ARRAY
@@ -782,5 +782,745 @@ export class SchemaHelpersService {
         ]
       }
     ]
+  };
+  MAX_COLS: FormlyFieldConfig  = {
+    key: 'maxCols',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Max cols',
+      description: 'Maximum amount of columns in the dashboard-grid',
+      attributes: {
+        icon: null,
+        forTab: 'Grid sizes',
+      },
+      value: 12,
+      default: 12,
+      access: ['admin', 'user'],
+      paramName: 'maxCols'
+    }
+  };
+  MAX_ROWS: FormlyFieldConfig  = {
+    key: 'maxRows',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Max rows',
+      description: 'Maximum amount of rows in the dashboard-grid',
+      attributes: {
+        icon: null,
+        forTab: 'Grid sizes',
+      },
+      value: 12,
+      default: 12,
+      access: ['admin', 'user'],
+      paramName: 'maxRows'
+    },
+  };
+  MIN_COLS: FormlyFieldConfig  = {
+    key: 'minCols',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Min cols',
+      description: 'Minimum amount of cols in the dashboard-grid',
+      attributes: {
+        icon: null,
+        forTab: 'Grid sizes',
+      },
+      value: 12,
+      default: 12,
+      access: ['admin', 'user'],
+      paramName: 'minCols'
+    },
+  };
+  MIN_ROWS: FormlyFieldConfig  = {
+    key: 'minRows',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Min rows',
+      description: 'Minimum amount of rows in the dashboard-grid',
+      attributes: {
+        icon: null,
+        forTab: 'Grid sizes',
+      },
+      value: 12,
+      default: 12,
+      access: ['admin', 'user'],
+      paramName: 'minRows'
+    },
+  };
+  MAX_ITEM_COLS: FormlyFieldConfig  = {
+    key: 'maxItemCols',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Max item cols',
+      description: 'maximum item number of cols',
+      attributes: {
+        icon: null,
+        forTab: 'Grid sizes',
+      },
+      value: 12,
+      default: 12,
+      access: ['admin'],
+      paramName: 'maxItemCols'
+    }
+  };
+  MIN_ITEM_COLS: FormlyFieldConfig  = {
+    key: 'minItemCols',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Min item cols',
+      description: 'minimum item number of cols',
+      attributes: {
+        icon: null,
+        forTab: 'Grid sizes',
+      },
+      value: 1,
+      default: 1,
+      access: ['admin'],
+      paramName: 'minItemCols'
+    }
+  };
+  MAX_ITEM_ROWS: FormlyFieldConfig  = {
+    key: 'maxItemRows',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Max item rows',
+      description: 'maximum item number of rows',
+      attributes: {
+        icon: null,
+        forTab: 'Grid sizes',
+      },
+      value: 12,
+      default: 12,
+      access: ['admin'],
+      paramName: 'maxItemRows'
+    }
+  };
+  MIN_ITEM_ROWS: FormlyFieldConfig  = {
+    key: 'minItemRows',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Min item rows',
+      description: 'minimum item number of rows',
+      attributes: {
+        icon: null,
+        forTab: 'Grid sizes',
+      },
+      value: 1,
+      default: 1,
+      access: ['admin'],
+      paramName: 'minItemRows'
+    }
+  };
+  MIN_ITEM_AREA: FormlyFieldConfig  = {
+    key: 'minItemArea',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Min item area',
+      description: 'minimum item area: cols * rows',
+      attributes: {
+        icon: null,
+        forTab: 'Grid sizes',
+      },
+      value: 1,
+      default: 1,
+      access: ['admin'],
+      paramName: 'minItemArea'
+    }
+  };
+  MAX_ITEM_AREA: FormlyFieldConfig  = {
+    key: 'maxItemArea',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Max item area',
+      description: 'maximum item area: cols * rows',
+      attributes: {
+        icon: null,
+        forTab: 'Grid sizes',
+      },
+      value: 144,
+      default: 144,
+      access: ['admin', 'user'],
+      paramName: 'maxItemArea'
+    }
+  };
+  DRAGGABLE_ENABLED = {
+    key: 'draggable.enabled',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    draggable: 'enabled',
+    templateOptions: {
+      label: 'Drag Items',
+      description: 'enable/disable draggable items',
+      attributes: {
+        icon: null,
+        forTab: 'Drag&Drop',
+      },
+      value: true,
+      default: true,
+      access: ['admin'],
+      paramName: 'draggable.enabled'
+    }
+  };
+  DRAGGABLE_IGNORE_CONTENT_CLASS = {
+    key: 'draggable.ignoreContentClass',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    draggable: 'ignoreContentClass',
+    templateOptions: {
+      label: 'Ignore Content Class',
+      description: '',
+      attributes: {
+        icon: null,
+        forTab: 'Drag&Drop',
+      },
+      value: 'no-drag',
+      default: 'no-drag',
+      access: ['admin'],
+      paramName: 'draggable.ignoreContentClass'
+    }
+  };
+  RESIZABLE_ENABLED = {
+    key: 'resizable.enabled',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    resizable: 'enabled',
+    templateOptions: {
+      label: 'Resizable items',
+      description: 'enable/disable resizable items',
+      attributes: {
+        icon: null,
+        forTab: 'Drag&Drop',
+      },
+      value: true,
+      default: true,
+      access: ['admin'],
+      paramName: 'resizable.enabled'
+    }
+  };
+  DRAGGABLE_DROP_OVER_ITEMS = {
+    key: 'draggable.dropOverItems',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    draggable: 'dropOverItems',
+    templateOptions: {
+      label: 'Drop over another',
+      description: 'enable items drop over another, will work if swap and push is disabled',
+      attributes: {
+        icon: null,
+        forTab: 'Drag&Drop',
+      },
+      value: true,
+      default: true,
+      access: ['admin'],
+      paramName: 'draggable.dropOverItems'
+    }
+  };
+  SWAP = {
+    key: 'swap',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Swap items',
+      description: 'allow items to switch position if drop on top of another',
+      attributes: {
+        icon: null,
+        forTab: 'Drag&Drop',
+      },
+      value: true,
+      default: true,
+      access: ['admin'],
+      paramName: 'swap'
+    }
+  };
+  PUSH_ITEMS = {
+    key: 'pushItems',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Push items',
+      description:  'push items when resizing and dragging',
+      attributes: {
+        icon: null,
+        forTab: 'Push',
+      },
+      value: true,
+      default: true,
+      access: ['admin'],
+      paramName: 'pushItems'
+    }
+  };
+  DISABLE_PUSH_ON_DRAG = {
+    key: 'disablePushOnDrag',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Disable Push On Drag',
+      description:  'disable push on drag',
+      attributes: {
+        icon: null,
+        forTab: 'Push',
+      },
+      value: false,
+      default: false,
+      access: ['admin'],
+      paramName: 'disablePushOnDrag'
+    }
+  };
+  DISABLE_PUSH_ON_RESIZE = {
+    key: 'disablePushOnResize',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Disable Push On Resize',
+      description:  'disable push on resize',
+      attributes: {
+        icon: null,
+        forTab: 'Push',
+      },
+      value: false,
+      default: false,
+      access: ['admin'],
+      paramName: 'disablePushOnResize'
+    }
+  };
+  PUSH_RESIZE_ITEMS = {
+    key: 'pushResizeItems',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Push Resize Items',
+      description:  'on resize of item will shrink adjacent items',
+      attributes: {
+        icon: null,
+        forTab: 'Push',
+      },
+      value: true,
+      default: true,
+      access: ['admin'],
+      paramName: 'pushResizeItems'
+    }
+  };
+  ENABLE_EMPTY_CELL_CLICK = {
+    key: 'enableEmptyCellClick',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Click to add',
+      description:  'enable empty cell click events',
+      attributes: {
+        icon: null,
+        forTab: 'Resize&Add',
+      },
+      value: false,
+      default: false,
+      access: ['admin'],
+      paramName:  'enableEmptyCellClick'
+    }
+  };
+  ENABLE_EMPTY_CELL_DRAG = {
+    key: 'enableEmptyCellDrag',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Drag to add',
+      description:  'enable empty cell drag events',
+      attributes: {
+        icon: null,
+        forTab: 'Resize&Add',
+      },
+      value: true,
+      default: true,
+      access: ['admin'],
+      paramName:  'enableEmptyCellDrag'
+    }
+  };
+  ENABLE_EMPTY_CELL_DROP = {
+    key: 'enableEmptyCellDrop',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Enable drop to add',
+      description:  'Enable drop to add',
+      attributes: {
+        icon: null,
+        forTab: 'Resize&Add',
+      },
+      value: false,
+      default: false,
+      access: ['admin'],
+      paramName:  'enableEmptyCellDrop'
+    }
+  };
+  ENABLE_OCCUPITED_CELL_DROP = {
+    key: 'enableOccupiedCellDrop',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Enable drop on occupied cell',
+      description:  'enable occupied cell drop events',
+      attributes: {
+        icon: null,
+        forTab: 'Resize&Add',
+      },
+      value: false,
+      default: false,
+      access: ['admin'],
+      paramName:  'enableOccupiedCellDrop'
+    }
+  };
+  ENABLE_EMPTY_CELL_CONTEXT_MENU = {
+    key: 'enableEmptyCellContextMenu',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Enable right click to add',
+      description: 'enable empty cell context menu (right click) events',
+      attributes: {
+        icon: null,
+        forTab: 'Resize&Add',
+      },
+      value: false,
+      default: false,
+      access: ['admin'],
+      paramName:  'enableEmptyCellContextMenu'
+    }
+  };
+  EMPTY_CELL_DRAG_MAX_COLS = {
+    key: 'emptyCellDragMaxCols',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Drag max cols',
+      description: 'limit empty cell drag max cols',
+      attributes: {
+        icon: null,
+        forTab: 'Grid Types',
+      },
+      value: 50,
+      default: 50,
+      access: ['admin'],
+      paramName:  'emptyCellDragMaxCols'
+    }
+  };
+  EMPTY_CELL_DRAG_MAX_ROWS = {
+    key: 'emptyCellDragMaxRows',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Drag max rows',
+      description: 'limit empty cell drag max rows',
+      attributes: {
+        icon: null,
+        forTab: 'Grid Types',
+      },
+      value: 50,
+      default: 50,
+      access: ['admin'],
+      paramName:  'emptyCellDragMaxRows'
+    }
+  };
+  GRID_TYPE = {
+    key: 'gridType',
+    type: 'select',
+    wrappers: ['form-field'],
+    templateOptions: {
+      description: 'different types for layout for the dashboard-grid',
+      attributes: {
+        icon: null,
+        forTab: 'Grid Types',
+      },
+      value: 'fit',
+      default: 'fit',
+      access: ['admin', 'user'],
+      paramName:  'gridType',
+      options: [
+        {key: 'fit', value: 'fit'},
+        {key: 'scrollVertical', value: 'scrollVertical'},
+        {key: 'scrollHorizontal', value: 'scrollHorizontal'},
+        {key: 'fixed', value: 'fixed'},
+        {key: 'verticalFixed', value: 'verticalFixed'},
+        {key: 'horizontalFixed', value: 'horizontalFixed'},
+      ],
+    }
+  };
+  FIXED_COL_WIDTH = {
+    key: 'fixedColWidth',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Fixed col width(px)',
+      description: 'fixed col width for gridType: fixed',
+      attributes: {
+        icon: null,
+        forTab: 'Grid Types',
+      },
+      value: 200,
+      default: 200,
+      access: ['admin', 'user'],
+      paramName:  'fixedColWidth',
+    }
+  };
+  FIXED_ROW_HEIGHT = {
+    key: 'fixedRowHeight',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Fixed row height(px)',
+      description: 'fixed row height for gridType: fixed',
+      attributes: {
+        icon: null,
+        forTab: 'Grid Types',
+      },
+      value: 100,
+      default: 100,
+      access: ['admin', 'user'],
+      paramName:  'fixedRowHeight'
+    }
+  };
+  KEEP_FIXED_WIDTH_IN_MOBILE = {
+    key: 'keepFixedWidthInMobile',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Keep fixed width in mobile',
+      description: 'keep the width from fixed gridType in mobile layout',
+      attributes: {
+        icon: null,
+        forTab: 'Grid Types',
+      },
+      value: false,
+      default: false,
+      access: ['admin'],
+      paramName:  'keepFixedWidthInMobile'
+    }
+  };
+  KEEP_FIXED_HEIGHT_IN_MOBILE = {
+    key: 'keepFixedHeightInMobile',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Keep fixed height in mobile',
+      description: 'keep the height from fixed gridType in mobile layout',
+      attributes: {
+        icon: null,
+        forTab: 'Grid Types',
+      },
+      value: false,
+      default: false,
+      access: ['admin'],
+      paramName:  'keepFixedHeightInMobile'
+    }
+  };
+  MOBILE_BREAK_POINT = {
+    key: 'mobileBreakpoint',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Mobile breakpoint',
+      description: 'if the screen is not wider that this, remove the grid layout and stack the items',
+      attributes: {
+        icon: null,
+        forTab: 'Grid Types',
+      },
+      value: 640,
+      default: 640,
+      access: ['admin'],
+      paramName:  'mobileBreakpoint'
+    }
+  };
+  COMPACT_TYPE = {
+    key: 'compactType',
+    type: 'select',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Compact Type',
+      description: 'dashboard-grid compact items',
+      attributes: {
+        icon: null,
+        forTab: 'View',
+      },
+      value: 'none',
+      default: 'none',
+      access: ['admin', 'user'],
+      paramName:  'compactType',
+      options: [
+        {key: 'none', value: 'none'},
+        {key: 'compactLeft', value: 'compactLeft'},
+        {key: 'compactRight', value: 'compactRight'},
+        {key: 'compactUp', value: 'compactUp'},
+        {key: 'compactLeft&Up', value: 'compactLeft&Up'},
+        {key: 'compactRight&Up', value: 'compactRight&Up'},
+        {key: 'compactUp&Left', value: 'compactUp&Left'},
+        {key: 'compactUp&Right', value: 'compactUp&Right'}
+      ],
+    }
+  };
+  DISPLAY_GRID = {
+    key: 'displayGrid',
+    type: 'select',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Display dashboard-grid lines',
+      description: 'display background dashboard-grid of rows and columns',
+      attributes: {
+        icon: null,
+        forTab: 'View',
+      },
+      value:  'onDrag&Resize',
+      default: 'onDrag&Resize',
+      access: ['admin'],
+      paramName:  'displayGrid',
+      options: [
+        {key: 'onDrag&Resize', value: 'onDrag&Resize'},
+        {key: 'always', value: 'always'},
+        {key: 'none', value: 'none'}
+      ],
+    }
+  };
+  MARGIN = {
+    key: 'margin',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Margin',
+      description: 'margin between grid items',
+      attributes: {
+        icon: null,
+        forTab: 'Margins',
+      },
+      value: 10,
+      default: 10,
+      access: ['admin', 'user'],
+      paramName:  'margin',
+    }
+  };
+  OUTER_MARGIN = {
+    key: 'outerMargin',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Outer margin',
+      description: 'if margins will apply to the sides of the container',
+      attributes: {
+        icon: null,
+        forTab: 'Margins',
+      },
+      value: true,
+      default: true,
+      access: ['admin', 'user'],
+      paramName:  'outerMargin'
+    }
+  };
+  OUTER_MARGIN_TOP = {
+    key: 'outerMarginTop',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label: 'Grid margin top',
+      description: 'override top outer margin for grid',
+      attributes: {
+        icon: null,
+        forTab: 'Margins',
+      },
+      value: null,
+      default: null,
+      access: ['admin'],
+      paramName:  'outerMarginTop'
+    }
+  };
+  OUTER_MARGIN_RIGHT = {
+    key: 'outerMarginRight',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label:  'Grid margin right',
+      description: 'override right outer margin for grid',
+      attributes: {
+        icon: null,
+        forTab: 'Margins',
+      },
+      value: null,
+      default: null,
+      access: ['admin'],
+      paramName:  'outerMarginRight'
+    }
+  };
+  OUTER_MARGIN_BOTTOM = {
+    key: 'outerMarginBottom',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label:  'Grid margin bottom',
+      description: 'override bottom outer margin for grid',
+      attributes: {
+        icon: null,
+        forTab: 'Margins',
+      },
+      value: null,
+      default: null,
+      access: ['admin'],
+      paramName:  'outerMarginBottom'
+    }
+  };
+  OUTER_MARGIN_LEFT = {
+    key: 'outerMarginLeft',
+    type: 'number',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label:  'Grid margin left',
+      description: 'override left outer margin for grid',
+      attributes: {
+        icon: null,
+        forTab: 'Margins',
+      },
+      value: null,
+      default: null,
+      access: ['admin'],
+      paramName:  'outerMarginLeft'
+    }
+  };
+  DISABLE_SCROLL_HORIZONTAL = {
+    key: 'disableScrollHorizontal',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label:  'Disable horizontal scroll',
+      description:  'enable/disable auto horizontal scrolling when on edge of dashboard-grid',
+      attributes: {
+        icon: null,
+        forTab: 'Scroll',
+      },
+      value: false,
+      default: false,
+      access: ['admin', 'user'],
+      paramName:  'disableScrollHorizontal'
+    }
+  };
+  DISABLE_SCROLL_VERTICAL = {
+    key: 'disableScrollVertical',
+    type: 'checkbox',
+    wrappers: ['form-field'],
+    templateOptions: {
+      label:  'Disable vertical scroll',
+      description:  'enable/disable auto vertical scrolling when on edge of dashboard-grid',
+      attributes: {
+        icon: null,
+        forTab: 'Scroll',
+      },
+      value: false,
+      default: false,
+      access: ['admin', 'user'],
+      paramName:  'disableScrollVertical'
+    }
   };
 }

@@ -28,7 +28,7 @@ export interface Tab {
             <ng-template mat-tab-label>
               <span>{{tab?.label}}</span>
             </ng-template>
-
+            <button (click)="onClick()">ЖМЫХ</button>
             <formly-form (modelChange)="onChange(model)" [fields]="tab?.fields" [form]="castFormGroup(form.at(index))" [model]="model"
                          [options]="options[index]">
             </formly-form>
@@ -70,7 +70,7 @@ export class FormlyComponent {
       ],
       dataSource: undefined,
       dimensions: undefined,
-      dateInterval: ['10-10-2020', '10-20-2020'],
+      dateInterval: [new Date(), new Date()],
       metrics: undefined,
       granularity: {'type': 'all'},
       aggregation: [],
@@ -143,14 +143,94 @@ export class FormlyComponent {
         ]
       },
       {
-        label: 'Фильтры',
+        label: 'Настройки',
         disabled: false,
         fields: [
           {
+            key: 'gridsterConfig',
             type: 'tabset',
+            templateOptions: {
+              tabs: [
+                {
+                  label: 'Grid sizes',
+                  icon: 'brightness_auto',
+                  disabled : false,
+                },
+                {
+                  label: 'Drag&Drop',
+                  icon: 'brightness_low',
+                  disabled : false,
+                },
+                {
+                  label: 'Push',
+                  icon: 'brightness_auto',
+                  disabled : false,
+                },
+                {
+                  label: 'Resize&Add',
+                  icon: 'brightness_low'
+                },
+                {
+                  label: 'Grid Types',
+                  icon: 'brightness_auto'
+                },
+                {
+                  label: 'View',
+                  icon: 'brightness_low'
+                },
+                {
+                  label: 'Margins',
+                  icon: 'brightness_auto'
+                },
+                {
+                  label: 'Scroll',
+                  icon: 'brightness_low'
+                },
+              ]
+            },
             fieldGroup: [
-              this._helper.USER_FILTERS,
-              this._helper.CROSS_FILTER
+              this._helper.MAX_COLS,
+              this._helper.MAX_ROWS,
+              this._helper.MIN_COLS,
+              this._helper.MIN_ROWS,
+              this._helper.MAX_ITEM_COLS,
+              this._helper.MIN_ITEM_COLS,
+              this._helper.MAX_ITEM_ROWS,
+              this._helper.MIN_ITEM_ROWS,
+              this._helper.MIN_ITEM_AREA,
+              this._helper.MAX_ITEM_AREA,
+              this._helper.DRAGGABLE_ENABLED,
+              this._helper.DRAGGABLE_IGNORE_CONTENT_CLASS,
+              this._helper.RESIZABLE_ENABLED,
+              this._helper.DRAGGABLE_DROP_OVER_ITEMS,
+              this._helper.SWAP,
+              this._helper.PUSH_ITEMS,
+              this._helper.DISABLE_PUSH_ON_DRAG,
+              this._helper.DISABLE_PUSH_ON_RESIZE,
+              this._helper.PUSH_RESIZE_ITEMS,
+              this._helper.ENABLE_EMPTY_CELL_CLICK,
+              this._helper.ENABLE_EMPTY_CELL_DRAG,
+              this._helper.ENABLE_EMPTY_CELL_DROP,
+              this._helper.ENABLE_OCCUPITED_CELL_DROP,
+              this._helper.ENABLE_EMPTY_CELL_CONTEXT_MENU,
+              this._helper.EMPTY_CELL_DRAG_MAX_COLS,
+              this._helper.EMPTY_CELL_DRAG_MAX_ROWS,
+              this._helper.GRID_TYPE,
+              this._helper.FIXED_COL_WIDTH,
+              this._helper.FIXED_ROW_HEIGHT,
+              this._helper.KEEP_FIXED_WIDTH_IN_MOBILE,
+              this._helper.KEEP_FIXED_HEIGHT_IN_MOBILE,
+              this._helper.MOBILE_BREAK_POINT,
+              this._helper.COMPACT_TYPE,
+              this._helper.DISPLAY_GRID,
+              this._helper.MARGIN,
+              this._helper.OUTER_MARGIN,
+              this._helper.OUTER_MARGIN_TOP,
+              this._helper.OUTER_MARGIN_RIGHT,
+              this._helper.OUTER_MARGIN_BOTTOM,
+              this._helper.OUTER_MARGIN_LEFT,
+              this._helper.DISABLE_SCROLL_HORIZONTAL,
+              this._helper.DISABLE_SCROLL_VERTICAL,
             ]
           }
         ]
@@ -183,5 +263,9 @@ export class FormlyComponent {
 
   onChange(model: any) {
     console.log(model);
+  }
+
+  onClick() {
+    console.log(this.model);
   }
 }
